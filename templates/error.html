@@ -14,26 +14,23 @@
             <input type="text" name="url" placeholder="Enter URL">
             <input type="submit" value="Audit">
         </form>
-    </div>
-   
-    <div class="container">
-        {% if err %}
-        <div class="err">
-        <p><strong>Error</strong></p>
-        <p>An error occurred:</p>
-        <p>{{ err }}</p>
-        </div>
-
-        {% elif status %}
-        <div class="status">
-        <p><strong>Status</strong></p>
-        <div class="down arrow-down"><p>{{status}}</p>
-        </div>
-        </div>
-        {% endif %}
         
-        <footer class="footer">
-            <p>Made with <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
-        </footer>
+        
+            {% if error_message %}
+            <div class="err">
+                <p><strong>Error: </strong>{{ error_message }}</p>
+            </div>
+            {% elif status %}
+            <div class="status">
+                <p><strong>Status</strong></p>
+                <div class="down arrow-down"><p>{{status}}</p></div>
+            </div>
+            {% endif %}
+     
+    </div>
+    
+    <footer class="footer">
+        <p>Made with <a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank">Flask</a>, <a href="https://playwright.dev/" target="_blank">Play Wright </a> and <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
+    </footer>
 </body>
 </html>

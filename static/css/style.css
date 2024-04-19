@@ -11,7 +11,7 @@ body {
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    
+    margin-bottom:10px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -250,7 +250,7 @@ cursor: pointer;
 }
 
 .footer {
-    position: fixed; 
+    margin-top:auto;
     bottom: 0; 
     width: 100%; 
     background-color:transparent; 

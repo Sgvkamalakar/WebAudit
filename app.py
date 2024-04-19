@@ -37,24 +37,31 @@ def get_page_load_time(url):
         context = browser.new_context()
         page = context.new_page()
         page.goto(url)
-        
         browser.close()
+        
         return load_time
     
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         url = request.form['url']
-        # print(url)
+        
+        if not url.startswith('http') or not url.startswith('https'):
+            e="Invalid URL"
+            return render_template('error.html', error_message=str(e))
         try:
             response = requests.get(url)
+            
         except Exception as e:
             return render_template('error.html', error_message=str(e))
         
         response = requests.get(url)
+        
         if response.status_code == 200: 
             status="UP"
+            
             with sync_playwright() as p:
+                
                 browser = p.chromium.launch()
                 page = browser.new_page()
 
@@ -63,6 +70,7 @@ def index():
                 performance_timing = page.evaluate('''() => {
                     return JSON.stringify(window.performance.timing);
                 }''')
+                
                 performance_timing = json.loads(performance_timing)
                 load_time = performance_timing['loadEventEnd'] - performance_timing['navigationStart']
                 
@@ -86,7 +94,9 @@ def index():
                 
                 command = f'lighthouse {url} --only-categories=accessibility,performance,seo --quiet --output=json'
                 audit_result = subprocess.run(command, shell=True, capture_output=True, text=True, encoding='utf-8')
+                
                 if audit_result.returncode == 0:  
+                
                     try:
                         audit_json = json.loads(audit_result.stdout)
                         accessibility_rating = audit_json['categories']['accessibility']['score']
@@ -95,14 +105,16 @@ def index():
                         print(f"\nAccessibility Rating: {accessibility_rating}")
                         print(f"\nPerformance Rating: {performance_rating}")
                         print(f"\nSEO Rating: {seo_rating}")
+                        
                     except json.JSONDecodeError as e:
                         err=f"Error decoding JSON: {e}"
                         print(err)
-                        return render_template('error.html',err=err)
+                        return render_template('error.html',error_message=err)
+                    
                 else:
                     err=audit_result.stderr
                     print(err)
-                    return render_template('error.html',err=err)
+                    return render_template('error.html',error_message=err)
 
                 page.goto(url)
                 page.screenshot(path=f'static/snapshot.png',full_page=True)

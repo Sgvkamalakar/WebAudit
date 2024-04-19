@@ -99,7 +99,7 @@
             <button class="expander" onclick="toggleSection('cookie')">Cookies</button>
             <button class="expander" onclick="toggleSection('beautified_html')">Beautified HTML</button>
             <button class="expander" onclick="toggleSection('links')">Links</button>
-            <button class="expander" onclick="toggleSection('snapshots')">Snapshots</button>
+            <button class="expander" onclick="toggleSection('snapshot')">Snapshot</button>
 
         </div>
         <div id="title" style="display: none;">
@@ -127,9 +127,9 @@
                 {% endfor %}
             </ul>
         </div>
-        <div id="snapshots" style="display: none;">
-            <p><strong>Snapshots</strong></p>
-            <div class="snapshots">
+        <div id="snapshot" style="display: none;">
+            <p><strong>Snapshot</strong></p>
+            <div class="snapshot">
                 <div class="snapshot">
                         <img src="{{ url_for('static', filename='images/snapshot.png') }}" onclick="openImage('{{ url_for('static', filename='images/snapshot.png') }}')">
                     </div>
@@ -140,8 +140,9 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="img01">
       </div>
+
     <footer class="footer">
-        <p>Made with <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
+        <p>Made with <a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank">Flask</a>, <a href="https://playwright.dev/" target="_blank">Play Wright </a> and <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
     </footer>
       <button onclick="scrollToTop()" id="goToTopBtn"><i class="fas fa-arrow-up"></i></button>
       <script src="{{ url_for('static', filename='js/script.js') }}"></script>
