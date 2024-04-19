@@ -13,10 +13,11 @@ Web Audit is a comprehensive web analytics dashboard designed to provide website
 <img src="https://github.com/Sgvkamalakar/WebAudit-flask/assets/103712713/d188176a-6721-4ea0-ac23-93bd02d7c152" height='200' width='200'/>
 </p>
 
-## Libraries
+## Tech stack
 
-- Flask
 - Playwright
+- Flask
+- Browserless
 - BeautifulSoup
 - `Nodejs` Lighthouse package
 
