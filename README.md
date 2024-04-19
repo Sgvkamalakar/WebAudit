@@ -1,11 +1,17 @@
+
 # Web Audit
 
 <p align=center>
   <img src="https://github.com/Sgvkamalakar/WebAudit-flask/assets/103712713/fd920183-39cc-4c0d-8123-72f5b576569e" height="400" width="400"/>
 </p>
 
-Web Audit is a comprehensive web analytics dashboard designed to provide website owners with actionable insights into their website's performance and key metrics. Whether you're a digital marketer, blogger, or small business owner, Web Audit aims to streamline the process of analyzing website performance, helping you make informed decisions to improve user experience and drive business growth.
+**`Web Audit`** is a comprehensive web analytics dashboard designed to provide website owners with actionable insights into their website's performance and key metrics. Whether you're a digital marketer, blogger, or small business owner, Web Audit aims to streamline the process of analyzing website performance, helping you make informed decisions to improve user experience and drive business growth.
 
+## Demo
+
+https://github.com/Sgvkamalakar/WebAudit/assets/103712713/9250eb00-6bcb-471f-a8d0-739b3642aa7a
+
+## Tech stack
 
 <p align="center">
 <img src="https://github.com/Sgvkamalakar/WebAudit-flask/assets/103712713/ec3d6cd5-f96a-4486-b11c-89f6de865eee" height='200' width='200'/>
@@ -13,7 +19,6 @@ Web Audit is a comprehensive web analytics dashboard designed to provide website
 <img src="https://github.com/Sgvkamalakar/WebAudit-flask/assets/103712713/d188176a-6721-4ea0-ac23-93bd02d7c152" height='200' width='200'/>
 </p>
 
-## Tech stack
 
 - Playwright
 - Flask
