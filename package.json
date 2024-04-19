@@ -1,0 +1,12 @@
+{
+    "name": "Web Audit",
+    "version": "1.0.0",
+    "description": "Empower website owners with actionable insights by automating comprehensive web audits using Flask, Playwright, and Lighthouse.",
+    "dependencies": {
+        "lighthouse": "^11.7.1"
+      },  
+    "scripts": {
+      "start": "python app.py" 
+    }
+  }
+  

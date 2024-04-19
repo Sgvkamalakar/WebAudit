@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Web Audit</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Enter a URL</h1>
+        <form method="post">
+            <input type="text" name="url" placeholder="Enter URL">
+            <input type="submit" value="Audit">
+        </form>
+    </div>
+    <footer class="footer">
+        <p>Made with <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
+    </footer>
+</body>
+</html>

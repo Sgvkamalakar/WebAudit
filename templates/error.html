@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/err.png') }}">
+    <title>Error</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter a URL</h1>
+        <form method="post">
+            <input type="text" name="url" placeholder="Enter URL">
+            <input type="submit" value="Audit">
+        </form>
+    </div>
+   
+    <div class="container">
+        {% if err %}
+        <div class="err">
+        <p><strong>Error</strong></p>
+        <p>An error occurred:</p>
+        <p>{{ err }}</p>
+        </div>
+
+        {% elif status %}
+        <div class="status">
+        <p><strong>Status</strong></p>
+        <div class="down arrow-down"><p>{{status}}</p>
+        </div>
+        </div>
+        {% endif %}
+        
+        <footer class="footer">
+            <p>Made with <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
+        </footer>
+</body>
+</html>

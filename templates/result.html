@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    
+</head>
+<body>
+    <div class="form">
+        <div class="title"><p><strong>Enter a URL</strong></p></div>
+        <form method="post">
+            <input type="text" name="url" placeholder="Enter URL">
+            <input type="submit" value="Audit">
+        </form>
+    </div>
+    <div class="container">
+        <div class="title"><p><strong>Page Metrics</strong></p></div>
+        <div class="container1">
+            <div class="box">
+                <p><strong>Page Loading Time</strong></p>
+                <div class="loader"></div>
+                <div class="time"><p><strong>{{ load_time }}</strong> ms</p></div>
+            </div>
+            <div class="box">
+                <p><strong>Status</strong></p>
+                {% if status=="UP" %}
+                <div class="up arrow-up"><p>{{status}}</p></div>
+                {% elif status=="DOWN" %}
+                <div class="down arrow-down"><p>{{status}}</p></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title"><p><strong>Performance Analysis Powered by </strong></p> 
+            <img src="{{ url_for('static', filename='images/lh.png') }}" alt="Light House" title="Light House"></div>
+        <div class="container1">
+            <div class="box">
+                <p><strong>Accessibility Rating</strong></p>
+                {% if ar>=0.9 %}
+                <div class="green">
+                    <h2>{{ar}}</h2>
+                </div>
+                {% elif 0.7<=ar<0.9 %}
+                <div class="orange">
+                    <h2>{{ar}}</h2>
+                </div>
+                {% else %}
+                <div class="red">
+                    <h2>{{ar}}</h2>
+                </div>
+                {% endif %}
+            </div>
+            <div class="box">
+                <p><strong>Performance Rating</strong></p>
+                {% if perf>=0.85 %}
+                <div class="green">
+                    <h2>{{perf}}</h2>
+                </div>
+                {% elif 0.7<=perf<0.85 %}
+                <div class="orange">
+                    <h2>{{perf}}</h2>
+                </div>
+                {% else %}
+                <div class="red">
+                    <h2>{{perf}}</h2>
+                </div>
+                {% endif %}
+            </div>
+            <div class="box">
+                <p><strong>SEO Rating</strong></p>
+                {% if seo>=0.9 %}
+                <div class="green">
+                    <h2>{{seo}}</h2>
+                </div>
+                {% elif 0.5<=seo<0.9 %}
+                <div class="orange">
+                    <h2>{{seo}}</h2>
+                </div>
+                {% else %}
+                <div class="red">
+                    <h2>{{seo}}</h2>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="title"><p><strong>Page Contents</strong></p></div>
+        <div class="button-container"> <!-- Added -->
+            <button class="expander" onclick="toggleSection('title')">Title</button>
+            <button class="expander" onclick="toggleSection('url')">URL</button>
+            <button class="expander" onclick="toggleSection('viewport_size')">Viewport Size</button>
+            <button class="expander" onclick="toggleSection('cookie')">Cookies</button>
+            <button class="expander" onclick="toggleSection('beautified_html')">Beautified HTML</button>
+            <button class="expander" onclick="toggleSection('links')">Links</button>
+            <button class="expander" onclick="toggleSection('snapshots')">Snapshots</button>
+
+        </div>
+        <div id="title" style="display: none;">
+            <p><strong>Title:</strong> {{ title }}</p>
+        </div>
+        <div id="url" style="display: none;">
+            <p><strong>URL:</strong> <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+        </div>
+        <div id="viewport_size" style="display: none;">
+            <p><strong>Viewport Size:</strong> {{ viewport_size }}</p>
+        </div>
+        <div id="cookie" style="display: none;">
+            <p><strong>Cookies:</strong></p>
+            <pre>{{ cookie }}</pre>
+        </div>
+        <div id="beautified_html" style="display: none;">
+            <p><strong>Beautified HTML:</strong></p>
+            <pre>{{ beautified_html }}</pre>
+        </div>
+        <div id="links" style="display: none;">
+            <p><strong>Links:</strong></p>
+            <ul>
+                {% for link in href_links %}
+                    <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="snapshots" style="display: none;">
+            <p><strong>Snapshots</strong></p>
+            <div class="snapshots">
+                <div class="snapshot">
+                        <img src="{{ url_for('static', filename='images/snapshot.png') }}" onclick="openImage('{{ url_for('static', filename='images/snapshot.png') }}')">
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+      </div>
+    <footer class="footer">
+        <p>Made with <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
+    </footer>
+      <button onclick="scrollToTop()" id="goToTopBtn"><i class="fas fa-arrow-up"></i></button>
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
