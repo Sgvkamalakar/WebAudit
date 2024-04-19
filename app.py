@@ -49,6 +49,7 @@ def index():
         if not url.startswith('http') or not url.startswith('https'):
             e="Invalid URL"
             return render_template('error.html', error_message=str(e))
+        
         try:
             response = requests.get(url)
             

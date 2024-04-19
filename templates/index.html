@@ -6,9 +6,23 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Web Audit</title>
-    
+   
 </head>
 <body>
+    
+    <div class="main">
+        <header class="glitter">
+            <h1><a href="https://github.com/Sgvkamalakar/WebAudit/blob/main/README.md" target=_"blank"><span class="glow">Web Audit</span></a></h1>
+            <p>
+                <a href="https://github.com/Sgvkamalakar/WebAudit" target="_blank" class="header-link yellow-glow">View Code & ⭐ on GitHub</a>
+                <span class="link-space"></span>
+                <a href="https://quine.sh/repo/Sgvkamalakar-WebAudit-787945558" target="_blank" class="header-link green-glow"> Vote on Quine</a>
+            </p>
+        </header>
+    
+    
+        
+
     <div class="container">
         <h1>Enter a URL</h1>
         <form method="post">
@@ -16,6 +30,7 @@
             <input type="submit" value="Audit">
         </form>
     </div>
+</div>
     <footer class="footer">
         <p>Made with <a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank">Flask</a>, <a href="https://playwright.dev/" target="_blank">Play Wright </a> and <span class="heart">❤️</span> by <a href="https://www.linkedin.com/in/sgvkamalakar" target="_blank"><strong>Kamalakar</strong></a></p>
     </footer>
