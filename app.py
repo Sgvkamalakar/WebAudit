@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 import json
 import requests
 import subprocess
-import random
 
 
 app = Flask(__name__)
@@ -22,24 +21,6 @@ def get_all_href_links(page):
 def beautify_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     return soup.prettify()
-
-def take_screenshot(url, filename):
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
-        page.goto(url)
-        page.screenshot(path=f"screenshots/{filename}.png")
-        browser.close()
-        
-def get_page_load_time(url):
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        context = browser.new_context()
-        page = context.new_page()
-        page.goto(url)
-        browser.close()
-        
-        return load_time
     
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -118,7 +99,7 @@ def index():
                     return render_template('error.html',error_message=err)
 
                 page.goto(url)
-                page.screenshot(path=f'static/snapshot.png',full_page=True)
+                page.screenshot(path='static/snapshot.png',full_page=True)
 
                 browser.close()
                 return render_template('result.html',load_time=load_time,status=status, title=title, url=url, viewport_size=viewport_size, cookie=cookie, beautified_html=beautified_html, href_links=href_links,ar=accessibility_rating,perf=performance_rating,seo=seo_rating)
