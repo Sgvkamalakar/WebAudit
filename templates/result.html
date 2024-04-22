@@ -121,11 +121,16 @@
         </div>
         <div id="links" style="display: none;">
             <p><strong>Links:</strong></p>
+            {% if c!=0 %}
             <ul>
                 {% for link in href_links %}
                     <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
                 {% endfor %}
             </ul>
+            {% else %}
+            <pre>No links found</pre>
+
+            {% endif %}
         </div>
         <div id="snapshot" style="display: none;">
             <p><strong>Snapshot</strong></p>
